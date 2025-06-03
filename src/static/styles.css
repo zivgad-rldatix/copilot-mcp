@@ -30,14 +30,15 @@ header h1 {
 
 main {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   gap: 30px;
-  justify-content: center;
+  align-items: center;
 }
 
 @media (min-width: 768px) {
   main {
-    grid-template-columns: 2fr 1fr;
+    flex-direction: row;
+    align-items: flex-start;
   }
 }
 
@@ -47,7 +48,7 @@ section {
   border-radius: 5px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   width: 100%;
-  max-width: 500px;
+  max-width: 700px;
 }
 
 section h3 {
@@ -58,7 +59,10 @@ section h3 {
 }
 
 .activity-card {
-  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 20px;
   padding: 15px;
   border: 1px solid #ddd;
   border-radius: 5px;
@@ -197,4 +201,41 @@ footer {
   margin-top: 30px;
   padding: 20px;
   color: #666;
+}
+
+/* Make activity cards display horizontally at the bottom on desktop */
+#activities-container {
+  order: 2;
+  width: 100%;
+}
+
+#signup-container {
+  order: 1;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  #signup-container {
+    max-width: 400px;
+    margin-right: 30px;
+  }
+  #activities-container {
+    max-width: 700px;
+  }
+}
+
+/* Responsive improvements for mobile, tablet, desktop */
+@media (max-width: 600px) {
+  .activity-card {
+    font-size: 15px;
+    padding: 10px;
+  }
+  section {
+    padding: 10px;
+  }
+}
+
+/* Add spacing for register button */
+.activity-card button {
+  margin-top: 10px;
 }
