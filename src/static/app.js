@@ -45,6 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
           <div class="participants-container">
             ${participantsHTML}
           </div>
+          <button class="register-btn" data-activity="${name}">Register Student</button>
         `;
 
         activitiesList.appendChild(activityCard);
@@ -59,6 +60,16 @@ document.addEventListener("DOMContentLoaded", () => {
       // Add event listeners to delete buttons
       document.querySelectorAll(".delete-btn").forEach((button) => {
         button.addEventListener("click", handleUnregister);
+      });
+
+      // Add event listeners to register buttons
+      document.querySelectorAll(".register-btn").forEach((button) => {
+        button.addEventListener("click", (event) => {
+          const activity = event.target.getAttribute("data-activity");
+          activitySelect.value = activity;
+          document.getElementById("email").focus();
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        });
       });
     } catch (error) {
       activitiesList.innerHTML =
